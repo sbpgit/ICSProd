@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="V_PRODCONFIG" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="V_PRODCONFIG"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ICSCONFIGPRODPROD.db::PRODCFG">
+    <resourceUri>ICSCONFIGPRODPROD.db::PRODCFG</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="CLASS"/>
+      <viewAttribute id="CHAR_NAME"/>
+      <viewAttribute id="CHAR_VALUE"/>
+      <viewAttribute id="CHAR_VALUE_DESC"/>
+      <viewAttribute id="CHAR_ATTR"/>
+      <viewAttribute id="CHAR_DESC"/>
+      <viewAttribute id="CUSTOMER_GROUP"/>
+      <viewAttribute id="RESERVE_FIELD1"/>
+      <viewAttribute id="RESERVE_FIELD2"/>
+      <viewAttribute id="RESERVE_FIELD3"/>
+      <viewAttribute id="RESERVE_FIELD4"/>
+      <viewAttribute id="RESERVE_FIELD5"/>
+      <viewAttribute id="CHNAGED_DATE"/>
+      <viewAttribute id="CHANGED_TIME"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CREATED_TIME"/>
+      <viewAttribute id="CREATED_BY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ICSCONFIGPRODPROD.db::PRODCFG">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="Product_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION_ID" source="Location_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLASS" source="Class"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHAR_NAME" source="Characteristic_Name"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHAR_VALUE" source="Characteristic _Value"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHAR_VALUE_DESC" source="Char_Value Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHAR_ATTR" source="Characteristic_Attribute"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHAR_DESC" source="Characteristic_Description"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_GROUP" source="Customer_Group"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESERVE_FIELD1" source="Reserve_Field1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESERVE_FIELD2" source="Reserve_Field2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESERVE_FIELD3" source="Reserve_Field3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESERVE_FIELD4" source="Reserve_Field4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESERVE_FIELD5" source="Reserve_Field5"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHNAGED_DATE" source="Changed_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_TIME" source="Changed_Time"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="Changed_By"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="Created_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TIME" source="Created_Time"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="Created_By"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:RankView" id="Rank_1">
+    <viewAttributes>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="LOCATION_ID"/>
+      <viewAttribute id="CLASS"/>
+      <viewAttribute id="CHAR_NAME"/>
+      <viewAttribute id="CHAR_VALUE"/>
+      <viewAttribute id="CHAR_VALUE_DESC"/>
+      <viewAttribute id="CHAR_ATTR"/>
+      <viewAttribute id="CHAR_DESC"/>
+      <viewAttribute id="CUSTOMER_GROUP"/>
+      <viewAttribute id="RESERVE_FIELD1"/>
+      <viewAttribute id="RESERVE_FIELD2"/>
+      <viewAttribute id="RESERVE_FIELD3"/>
+      <viewAttribute id="RESERVE_FIELD4"/>
+      <viewAttribute id="RESERVE_FIELD5"/>
+      <viewAttribute id="CHNAGED_DATE"/>
+      <viewAttribute id="CHANGED_TIME" aggregationType="min"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CREATED_TIME" aggregationType="min"/>
+      <viewAttribute id="CREATED_BY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1"/>
+    <rankingFilter type="RANK" offset="0" offsetReference="FRONT" dynamicPartitionAttributes="false">
+      <order byViewAttributeName="PRODUCT_ID" direction="ASC"/>
+      <rankThreshold>
+        <value>50</value>
+      </rankThreshold>
+    </rankingFilter>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Rank_1">
+  <attributes>
+    <attribute id="PRODUCT_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Id"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="LOCATION_ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Location_ID"/>
+      <keyMapping columnObjectName="Rank_1" columnName="LOCATION_ID"/>
+    </attribute>
+    <attribute id="CLASS" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Class"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CLASS"/>
+    </attribute>
+    <attribute id="CHAR_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Characteristic_Name"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHAR_NAME"/>
+    </attribute>
+    <attribute id="CHAR_VALUE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Characteristic__Value"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHAR_VALUE"/>
+    </attribute>
+    <attribute id="CHAR_VALUE_DESC" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Char_Value_Desc"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHAR_VALUE_DESC"/>
+    </attribute>
+    <attribute id="CHAR_ATTR" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Characteristic_Attribute"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHAR_ATTR"/>
+    </attribute>
+    <attribute id="CHAR_DESC" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Characteristic_Description"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHAR_DESC"/>
+    </attribute>
+    <attribute id="CUSTOMER_GROUP" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer_Group"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CUSTOMER_GROUP"/>
+    </attribute>
+    <attribute id="RESERVE_FIELD1" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Reserve_Field1"/>
+      <keyMapping columnObjectName="Rank_1" columnName="RESERVE_FIELD1"/>
+    </attribute>
+    <attribute id="RESERVE_FIELD2" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Reserve_Field2"/>
+      <keyMapping columnObjectName="Rank_1" columnName="RESERVE_FIELD2"/>
+    </attribute>
+    <attribute id="RESERVE_FIELD3" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Reserve_Field3"/>
+      <keyMapping columnObjectName="Rank_1" columnName="RESERVE_FIELD3"/>
+    </attribute>
+    <attribute id="RESERVE_FIELD4" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Reserve_Field4"/>
+      <keyMapping columnObjectName="Rank_1" columnName="RESERVE_FIELD4"/>
+    </attribute>
+    <attribute id="RESERVE_FIELD5" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Reserve_Field5"/>
+      <keyMapping columnObjectName="Rank_1" columnName="RESERVE_FIELD5"/>
+    </attribute>
+    <attribute id="CHNAGED_DATE" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Changed_Date"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHNAGED_DATE"/>
+    </attribute>
+    <attribute id="CHANGED_BY" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Changed_By"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHANGED_BY"/>
+    </attribute>
+    <attribute id="CREATED_DATE" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Created_Date"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CREATED_DATE"/>
+    </attribute>
+    <attribute id="CREATED_BY" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Created_By"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CREATED_BY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CHANGED_TIME" order="16" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Changed_Time"/>
+      <measureMapping columnObjectName="Rank_1" columnName="CHANGED_TIME"/>
+    </measure>
+    <measure id="CREATED_TIME" order="19" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Created_Time"/>
+      <measureMapping columnObjectName="Rank_1" columnName="CREATED_TIME"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="322"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Rank_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

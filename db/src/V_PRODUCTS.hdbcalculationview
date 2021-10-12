@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="V_PRODUCTS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="V_PRODUCTS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ICSCONFIGPROD.db::PRODUCT">
+    <resourceUri>ICSCONFIGPROD.db::PRODUCT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:RankView" id="Rank_1">
+    <viewAttributes>
+      <viewAttribute id="PRODUCTID"/>
+      <viewAttribute id="PRODUCTDESC"/>
+      <viewAttribute id="PRODUCTFAMILY"/>
+      <viewAttribute id="PRODUCTGROUP"/>
+      <viewAttribute id="PRODUCTMODEL"/>
+      <viewAttribute id="PRODMODELRANGE"/>
+      <viewAttribute id="PRODSERIES"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1"/>
+    <rankingFilter type="RANK" offset="0" offsetReference="FRONT" dynamicPartitionAttributes="false">
+      <order byViewAttributeName="PRODUCTID" direction="ASC"/>
+      <rankThreshold>
+        <value>20</value>
+      </rankThreshold>
+      <rankViewAttributeName>RANK</rankViewAttributeName>
+    </rankingFilter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="PRODUCTID"/>
+      <viewAttribute id="PRODUCTDESC"/>
+      <viewAttribute id="PRODUCTFAMILY"/>
+      <viewAttribute id="PRODUCTGROUP"/>
+      <viewAttribute id="PRODUCTMODEL"/>
+      <viewAttribute id="PRODMODELRANGE"/>
+      <viewAttribute id="PRODSERIES"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ICSCONFIGPROD.db::PRODUCT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="Product_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTDESC" source="Product_Desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTFAMILY" source="Product_Family"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTGROUP" source="Product_Group"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTMODEL" source="Product_Model"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODMODELRANGE" source="Product_Model_Range"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODSERIES" source="Product_Series"/>
+    </input>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Rank_1">
+  <attributes>
+    <attribute id="PRODUCTID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_ID"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODUCTID"/>
+    </attribute>
+    <attribute id="PRODUCTDESC" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Desc"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODUCTDESC"/>
+    </attribute>
+    <attribute id="PRODUCTFAMILY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Family"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODUCTFAMILY"/>
+    </attribute>
+    <attribute id="PRODUCTGROUP" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Group"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODUCTGROUP"/>
+    </attribute>
+    <attribute id="PRODUCTMODEL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Model"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODUCTMODEL"/>
+    </attribute>
+    <attribute id="PRODMODELRANGE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Model_Range"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODMODELRANGE"/>
+    </attribute>
+    <attribute id="PRODSERIES" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Series"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODSERIES"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="RANK" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RANK"/>
+      <measureMapping columnObjectName="Rank_1" columnName="RANK"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Rank_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="322"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

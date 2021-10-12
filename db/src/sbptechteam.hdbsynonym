@@ -1,0 +1,67 @@
+{
+  "ICSCONFIGPROD.db::LOCATION": {
+    "target": {
+      "object": "SBPCICS_LOC",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  "ICSCONFIGPROD.db::CUSTOMERGROUP": {
+    "target": {
+      "object": "SBPCICS_CUSGRP",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  "ICSCONFIGPROD.db::PRODUCT": {
+    "target": {
+      "object": "SBPCICS_PROD",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  "ICSCONFIGPRODPROD.db::PRODCFG": {
+    "target": {
+      "object": "SBPCICS_PRDCFG",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  
+  "ICSCONFIGPRODPROD.db::PRODATR": {
+    "target": {
+      "object": "SBPCICS_PD_ATR",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  
+  "ICSCONFIGPRODPROD.db::PIRCH": {
+    "target": {
+      "object": "SBPCICS_PIR_CH",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  "ICSCONFIGPRODPROD.db::SALESH": {
+    "target": {
+      "object": "SBPCICS_SALESH",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  
+  "ICSCONFIGPRODPROD.db::SHCFG": {
+    "target": {
+      "object": "SBPCICS_SH_CFG",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  
+  "ICSCONFIGPRODPROD.db::SHCSY": {
+    "target": {
+      "object": "SBPCICS_SH_CSY",
+      "schema": "SBPTECHTEAM"
+    }
+  },
+  
+  "ICSCONFIGPRODPROD.db::SHSMY": {
+    "target": {
+      "object": "SBPCICS_SH_SMY",
+      "schema": "SBPTECHTEAM"
+    }
+  }
+}

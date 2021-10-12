@@ -1,0 +1,14 @@
+{
+    "sbptechteam-schema": {
+        "object_owner": {
+            "roles": [
+                "sbpschema::external_access_g"
+            ]
+        },
+        "application_user": {
+            "roles": [
+                "sbpschema::external_access"
+            ]
+        }
+    }
+}

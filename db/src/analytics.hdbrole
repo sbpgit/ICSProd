@@ -1,0 +1,13 @@
+{
+  "role": {
+    "name": "icsconfigprod.db::analytics",
+    "schema_privileges": [
+      {
+        "privileges": [
+          "SELECT",
+          "EXECUTE"
+        ]
+      }
+    ]
+  }
+}

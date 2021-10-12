@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="V_SALESH_CFG" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="V_SALESH_CFG"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ICSCONFIGPRODPROD.db::SHCFG">
+    <resourceUri>ICSCONFIGPRODPROD.db::SHCFG</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="SALES_DOCUMENT_ITEM"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="CHARACTERSTIC"/>
+      <viewAttribute id="CHARACTERSTIC_VALUE"/>
+      <viewAttribute id="PROD_AVAILABILITY_DT"/>
+      <viewAttribute id="CHANGED_DATE"/>
+      <viewAttribute id="CHANGED_TIME"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CREATED_TIME"/>
+      <viewAttribute id="CREATED_BY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ICSCONFIGPRODPROD.db::SHCFG">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT" source="Sales_Document"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SALES_DOCUMENT_ITEM" source="Sales_Document_Item"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="Product_Id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHARACTERSTIC" source="Characterstic"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHARACTERSTIC_VALUE" source="Characterstic_Value"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROD_AVAILABILITY_DT" source="Prod_Availability_Dt"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_DATE" source="Changed_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_TIME" source="Changed_Time"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="Changed_By"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_DATE" source="Created_Date"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_TIME" source="Created_Time"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="Created_By"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:RankView" id="Rank_1">
+    <viewAttributes>
+      <viewAttribute id="SALES_DOCUMENT"/>
+      <viewAttribute id="SALES_DOCUMENT_ITEM"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="CHARACTERSTIC"/>
+      <viewAttribute id="CHARACTERSTIC_VALUE"/>
+      <viewAttribute id="PROD_AVAILABILITY_DT"/>
+      <viewAttribute id="CHANGED_DATE"/>
+      <viewAttribute id="CHANGED_TIME" aggregationType="min"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CREATED_TIME" aggregationType="min"/>
+      <viewAttribute id="CREATED_BY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1"/>
+    <rankingFilter type="RANK" offset="0" offsetReference="FRONT" dynamicPartitionAttributes="false">
+      <order byViewAttributeName="SALES_DOCUMENT" direction="ASC"/>
+      <rankThreshold>
+        <value>50</value>
+      </rankThreshold>
+      <rankViewAttributeName>RANK</rankViewAttributeName>
+    </rankingFilter>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Rank_1">
+  <attributes>
+    <attribute id="SALES_DOCUMENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales_Document"/>
+      <keyMapping columnObjectName="Rank_1" columnName="SALES_DOCUMENT"/>
+    </attribute>
+    <attribute id="SALES_DOCUMENT_ITEM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales_Document_Item"/>
+      <keyMapping columnObjectName="Rank_1" columnName="SALES_DOCUMENT_ITEM"/>
+    </attribute>
+    <attribute id="PRODUCT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product_Id"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="CHARACTERSTIC" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Characterstic"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHARACTERSTIC"/>
+    </attribute>
+    <attribute id="CHARACTERSTIC_VALUE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Characterstic_Value"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHARACTERSTIC_VALUE"/>
+    </attribute>
+    <attribute id="PROD_AVAILABILITY_DT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Prod_Availability_Dt"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PROD_AVAILABILITY_DT"/>
+    </attribute>
+    <attribute id="CHANGED_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Changed_Date"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHANGED_DATE"/>
+    </attribute>
+    <attribute id="CHANGED_BY" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Changed_By"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CHANGED_BY"/>
+    </attribute>
+    <attribute id="CREATED_DATE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Created_Date"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CREATED_DATE"/>
+    </attribute>
+    <attribute id="CREATED_BY" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Created_By"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CREATED_BY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CHANGED_TIME" order="8" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Changed_Time"/>
+      <measureMapping columnObjectName="Rank_1" columnName="CHANGED_TIME"/>
+    </measure>
+    <measure id="CREATED_TIME" order="11" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Created_Time"/>
+      <measureMapping columnObjectName="Rank_1" columnName="CREATED_TIME"/>
+    </measure>
+    <measure id="RANK" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RANK"/>
+      <measureMapping columnObjectName="Rank_1" columnName="RANK"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="322"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Rank_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

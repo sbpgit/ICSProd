@@ -1,0 +1,8 @@
+{
+  "com.sap::SBPCICS_PD_ATR": {
+    "target": {
+      "object": "SBPCICS_PD_ATR",
+      "schema": "SBPTECHTEAM"
+    }
+  }
+}

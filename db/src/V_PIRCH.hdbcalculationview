@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="V_PIRCH" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="V_PIRCH"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="ICSCONFIGPRODPROD.db::PIRCH">
+    <resourceUri>ICSCONFIGPRODPROD.db::PIRCH</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="MATERIAL"/>
+      <viewAttribute id="PLANT"/>
+      <viewAttribute id="REQ_DATE"/>
+      <viewAttribute id="PT_NUMBER"/>
+      <viewAttribute id="PT_LINE"/>
+      <viewAttribute id="SESSION_ID"/>
+      <viewAttribute id="CHARACTERSTIC"/>
+      <viewAttribute id="CHARACTERSTIC_VALUE"/>
+      <viewAttribute id="FLAG_USAGE"/>
+      <viewAttribute id="CH_QTY"/>
+      <viewAttribute id="PROCESS_FLAG"/>
+      <viewAttribute id="CHANGED_DATE"/>
+      <viewAttribute id="CHANGED_TIME"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="CREATED_DATE"/>
+      <viewAttribute id="CREATED_TIME"/>
+      <viewAttribute id="CREATED_BY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="ICSCONFIGPRODPROD.db::PIRCH"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="MATERIAL" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATERIAL"/>
+      <keyMapping columnObjectName="Projection_1" columnName="MATERIAL"/>
+    </attribute>
+    <attribute id="PLANT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PLANT"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PLANT"/>
+    </attribute>
+    <attribute id="REQ_DATE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REQ_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="REQ_DATE"/>
+    </attribute>
+    <attribute id="PT_NUMBER" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PT_NUMBER"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PT_NUMBER"/>
+    </attribute>
+    <attribute id="PT_LINE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PT_LINE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PT_LINE"/>
+    </attribute>
+    <attribute id="SESSION_ID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SESSION_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SESSION_ID"/>
+    </attribute>
+    <attribute id="CHARACTERSTIC" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHARACTERSTIC"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CHARACTERSTIC"/>
+    </attribute>
+    <attribute id="CHARACTERSTIC_VALUE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHARACTERSTIC_VALUE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CHARACTERSTIC_VALUE"/>
+    </attribute>
+    <attribute id="FLAG_USAGE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLAG_USAGE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="FLAG_USAGE"/>
+    </attribute>
+    <attribute id="PROCESS_FLAG" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROCESS_FLAG"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PROCESS_FLAG"/>
+    </attribute>
+    <attribute id="CHANGED_DATE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CHANGED_DATE"/>
+    </attribute>
+    <attribute id="CHANGED_BY" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_BY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CHANGED_BY"/>
+    </attribute>
+    <attribute id="CREATED_DATE" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CREATED_DATE"/>
+    </attribute>
+    <attribute id="CREATED_BY" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_BY"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CREATED_BY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CH_QTY" order="10" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CH_QTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CH_QTY"/>
+    </measure>
+    <measure id="CHANGED_TIME" order="13" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="CHANGED_TIME"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CHANGED_TIME"/>
+    </measure>
+    <measure id="CREATED_TIME" order="16" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="CREATED_TIME"/>
+      <measureMapping columnObjectName="Projection_1" columnName="CREATED_TIME"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
