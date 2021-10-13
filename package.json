@@ -6,7 +6,7 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
-        "@sap/cds": "^5",
+        "@sap/cds": "^5.5.3",
         "@sap/cds-odata-v2-adapter-proxy": "^1.7.9",
         "@sap/hana-client": "^2.6.61",
         "express": "^4",
@@ -16,7 +16,7 @@
         "node": "^12 || ^14"
     },
     "scripts": {
-        "start": "cds run",
+        "start": "cds watch",
         "watch-prod": "cds watch --open prod/webapp/index.html#fe-lrop-v4",
         "undeploy": "cf undeploy ICSConfigProd --delete-services --delete-service-keys",
         "watch-loc": "cds watch --open loc/webapp/index.html#fe-lrop-v4",
@@ -60,7 +60,7 @@
         },
         "requires": {
             "db": {
-                "kind": "hana",                
+                "kind": "hana",
                 "classicalSchema": "SBPTECHTEAM",
                 "classicalSchemaPassword": "Sbpcorp@21"
             }
