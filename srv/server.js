@@ -11,21 +11,21 @@ const proxy = require("@sap/cds-odata-v2-adapter-proxy");
 cds.on("bootstrap", app => app.use(proxy()));
 
 module.exports = cds.server;
-module.exports = () => {
-	var app = express.Router();
+//module.exports = () => {
+//	var app = express.Router();
 
 	//Hello Router
-	app.get("/", (req, res) => {
-		let client = require("@sap/hana-client");
+//	app.get("/", (req, res) => {
+//		let client = require("@sap/hana-client");
 		//Lookup HANA DB Connection from Bound HDB Container Service
-		const xsenv = require("@sap/xsenv");
-		let hanaOptions = xsenv.getServices({
-			hana: {
-				tag: "hana"
-			}
-		});
+//		const xsenv = require("@sap/xsenv");
+//		let hanaOptions = xsenv.getServices({
+//			hana: {
+//				tag: "hana"
+//			}
+//		});
 		//Create DB connection with options from the bound service
-		let conn = client.createConnection();
+		var conn = hana.createConnection();
 		var connParams = {
 			serverNode  : cds.env.requires.db.credentials.host + ":" + cds.env.requires.db.credentials.port,
             uid         : cds.env.requires.db.classicalSchema,
@@ -71,9 +71,9 @@ module.exports = () => {
             }
         }
     }
-    });
+//    });
     return app;
-}
+//}
 
 /*var conn = hana.createConnection();
 var asalescfg;
