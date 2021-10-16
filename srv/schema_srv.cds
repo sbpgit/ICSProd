@@ -104,5 +104,5 @@ service CatalogService{
   entity ET_PRODBOM
   as projection on schema.ZPROD_BOM;
  
- function getTimeSeries() returns String;
+ function getTimeSeries()    returns String;
 }

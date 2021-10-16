@@ -11,28 +11,65 @@ const proxy = require("@sap/cds-odata-v2-adapter-proxy");
 cds.on("bootstrap", app => app.use(proxy()));
 
 module.exports = cds.server;
-/*
-module.exports = () => {
-	var app = express.Router();
 
-	//Hello Router
-//	app.get("/", (req, res) => {
-//		let client = require("@sap/hana-client");
-		//Lookup HANA DB Connection from Bound HDB Container Service
-//		const xsenv = require("@sap/xsenv");
-//		let hanaOptions = xsenv.getServices({
-//			hana: {
-//				tag: "hana"
-//			}
-//		});
 		//Create DB connection with options from the bound service
-		var conn = hana.createConnection();
+		
+		let client = require("@sap/hana-client");
 		var connParams = {
 			serverNode  : cds.env.requires.db.credentials.host + ":" + cds.env.requires.db.credentials.port,
             uid         : cds.env.requires.db.classicalSchema,
             pwd         : cds.env.requires.db.classicalSchemaPassword
         };
         //connect
+        var conn = hana.createConnection();
+        conn.connect(connParams);
+// Fetch sales history config        
+        let sqlStr = "SELECT * FROM SBPCICS_SALH_CFG";
+        let stmt=conn.prepare(sqlStr);
+        let results=stmt.exec();
+        stmt.drop();
+        for (var i = 0; i < results.length; i++)   {                     
+            osalesres.push(result[i]);
+        }
+
+// Fetch sales history config        
+        let sqlStr = "SELECT * FROM SBPCICS_SALH_CFG";
+        let stmt=conn.prepare(sqlStr);
+        let results=stmt.exec();
+        stmt.drop();
+        for (var i = 0; i < results.length; i++)   {                     
+            osalesres.push(result[i]);
+        }
+        results.drop();
+
+// Fetch sales history config        
+        let sqlStr = "SELECT * FROM SBPCICS_BOM_OD";
+        let stmt=conn.prepare(sqlStr);
+        let results=stmt.exec();
+        stmt.drop();
+        for (var i = 0; i < results.length; i++)  {
+            obom.push(results[i]);
+        }    
+        results.drop();   
+
+// Fetch sales history config        
+        let sqlStr = "SELECT * FROM SBPCICS_OBJDEPENDENCY";
+        let stmt=conn.prepare(sqlStr);
+        let results=stmt.exec();
+        stmt.drop();
+        for (var i = 0; i < result.length; i++) { 
+            obomod.push(result[i]);
+        } 
+        results.drop();
+// Logic for time series
+        for( var i = 0; i < osalesres.length; i++){
+        for( var j = 0; j < obomod.lenght ; j++ ){
+            if( oTSData1.length === 0){
+                oTSData1.
+            }
+        }
+    }
+/*conn.disconnect();
 		conn.connect(connParams, (err) => {
 			if (err) {
 				return res.type("text/plain").status(500).send(`ERROR: ${JSON.stringify(err)}`);
@@ -48,32 +85,11 @@ module.exports = () => {
 				});
 			}
 			return null;
-        });
-        conn.exec("SELECT * FROM SALESH_CFG",function(err,result){
-            for (var i = 0; i < result.length; i++)   {                     
-            osalesres.push(result[i]);
-        }
-    });
-        conn.exec("SELECT * FROM SBPCICS_BOM",function(err,result){
-        for (var i = 0; i < result.length; i++)  {
-            obom.push(result[i]);
-
-        }
-    });
-        conn.exec("SELECT * FROM SBPCICS_BOM_OD",function(err,result){
-        for (var i = 0; i < result.length; i++) { 
-            obomod.push(result[i]);
-        }
-        });
-    for( var i = 0; i < obomod.length; i++){
-        for( var j = 0; j < obom.lenght ; j++ ){
-            if( oTSData1.length === 0){
-                
-            }
-        }
-    }
+        });*/
+       
+    
 //    });
-    return app;
+ //   return app;
 //}
 
 /*var conn = hana.createConnection();
